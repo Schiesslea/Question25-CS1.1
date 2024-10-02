@@ -1,0 +1,36 @@
+Index: src/Utilitaire/Vue.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace App\\Utilitaire;\r\nclass Vue\r\n{\r\n\r\n    private ?Vue_Composant $entete = NULL;\r\n    private ?Vue_Composant $menu = NULL;\r\n    private  array  $corps = [];\r\n    private ?Vue_Composant $basDePage = NULL;\r\n    private bool $modeDebug = FALSE;\r\n\r\n    public function setEntete(Vue_Composant $composant) : void\r\n    {\r\n        $this->entete = $composant;\r\n    }\r\n\r\n    public function setMenu(Vue_Composant $composant) : void\r\n    {\r\n        $this->menu = $composant;\r\n    }\r\n\r\n    public function addToCorps(Vue_Composant $composant) : void\r\n    {\r\n        $this->corps[] = $composant;\r\n    }\r\n    public function setBasDePage(Vue_Composant $composant) : void\r\n    {\r\n        $this->basDePage = $composant;\r\n    }\r\n\r\n    public function setDebut() : void\r\n    {\r\n        $this->modeDebug = true;\r\n    }\r\n\r\n    /**\r\n     * Affiche le contenu de la vue\r\n     * Le mode debug permet de ne pas afficher\r\n     * @return void\r\n     */\r\n    public function afficher() : void{\r\n        if(!$this->modeDebug) {\r\n            if (!is_null($this->entete)) {\r\n                echo $this->entete->donneTexte();\r\n            }\r\n\r\n            if (!(is_null($this->menu))) {\r\n                echo $this->menu->donneTexte();\r\n            }\r\n\r\n            //On affiche tous les élements contenus dans le corps\r\n            foreach ($this->corps as $elementCorps)\r\n                echo $elementCorps->donneTexte();\r\n\r\n            if (!(is_null($this->basDePage))) {\r\n                echo $this->basDePage->donneTexte();\r\n            }\r\n        }\r\n    }\r\n}
+===================================================================
+diff --git a/src/Utilitaire/Vue.php b/src/Utilitaire/Vue.php
+--- a/src/Utilitaire/Vue.php	
++++ b/src/Utilitaire/Vue.php	
+@@ -17,8 +17,8 @@
+ 
+     public function setMenu(Vue_Composant $composant) : void
+     {
+-        $this->menu = $composant;
+-    }
++            $this->menu = $composant;
++        }
+ 
+     public function addToCorps(Vue_Composant $composant) : void
+     {
+Index: composer.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"vendor_name/cafe\",\r\n  \"description\": \"description\",\r\n  \"minimum-stability\": \"stable\",\r\n  \"license\": \"proprietary\",\r\n  \"authors\": [\r\n    {\r\n      \"name\": \"JB\",\r\n      \"email\": \"email@example.com\"\r\n    }\r\n  ],\r\n  \"autoload\": {\r\n    \"psr-4\": {\r\n      \"App\\\\\": \"src\"\r\n    }\r\n\r\n  }\r\n}\r\n
+===================================================================
+diff --git a/composer.json b/composer.json
+--- a/composer.json	
++++ b/composer.json	
+@@ -11,7 +11,7 @@
+   ],
+   "autoload": {
+     "psr-4": {
+-      "App\\": "src"
++      "App\\": "src/"
+     }
+ 
+   }

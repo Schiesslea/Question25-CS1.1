@@ -9,15 +9,17 @@ class Vue_Menu_A extends Vue_Composant
     function donneTexte(): string
     {
 
-                return "
+        return "
              <nav id='menu'>
-              <ul id='menu-closed'> 
+              <ul id='menu-closed'>
                 <li><a href='?case=A'>****cas A****</a></li>
                 <li><a href='?case=B'>cas B</a></li>
-                <li><a href='?case=maTable'>Ma Table</a></li>     
+                <li><a href='?case=maTable'>Ma Table</a></li>
+                <li><a href='?case=utilisateur'>Utilisateur</a></li>     
                    </ul>
-            </nav> 
+            </nav>
 ";
-              
+
     }
 }
+?>
